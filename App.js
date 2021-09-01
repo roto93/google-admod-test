@@ -11,7 +11,14 @@ import SettingPage from './src/screen/SettingPage'
 import AnswerPage from './src/screen/AnswerPage'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
+
 export default function App() {
+
+    // HoroscopePageAdsId: ca-app-pub-9519659821972813/7365619702
+    // SelectorBannerAdsId: ca-app-pub-9519659821972813/1808033089
+
+
+    // testAdsId: ca-app-pub-3940256099942544/6300978111
 
     const Tab = createBottomTabNavigator()
     const Stack = createStackNavigator()

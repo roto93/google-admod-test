@@ -2,12 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, SafeAreaView, Text, TextInput, TouchableOpacity, Image, FlatList, Button } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { AdMobBanner } from 'expo-ads-admob'
 
 function SettingPage(props) {
     const [rerender, setRerender] = useState(true);
     const [itemName, setItemName] = useState('');
     const [itemArr, setItemArr] = useState([]);
     let localItemArr = itemArr  // 本地的Array, 方便做陣列的運算
+
 
 
     const _renderItem = (item, index) => {
@@ -35,6 +37,13 @@ function SettingPage(props) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <AdMobBanner
+                bannerSize={'banner'}
+                adUnitID={'ca-app-pub-3940256099942544/6300978111'}
+                onAdViewDidReceiveAd={() => { console.log('ad') }}
+                onDidFailToReceiveAdWithError={() => { console.log('fail ') }}
+
+            />
             <Text style={styles.addNew}>新 增 選 項</Text>
             <View style={styles.rowBox}>
                 <TextInput

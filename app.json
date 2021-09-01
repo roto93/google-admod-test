@@ -24,7 +24,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.roto93.hardToSelect"
+      "package": "com.roto93.hardToSelect",
+      "config":{
+        "googleMobileAdsAppId": "ca-app-pub-9519659821972813~88196850655"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

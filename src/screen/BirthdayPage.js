@@ -1,10 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, SafeAreaView, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { AdMobBanner, AdMobInterstitial } from 'expo-ads-admob'
 
 function BirthdayPage(props) {
     const [birthday, setBirthday] = useState('');
+
+    useEffect(() => {
+        const runAds = async () => {
+            try {
+                await AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712'); // Test ID, Replace with your-admob-unit-id
+                await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+                await AdMobInterstitial.showAdAsync();
+            } catch (e) { console.log(e) }
+            console.log('done')
+        }
+        runAds()
+    }, [])
 
     // 檢查日期
     const checkDate = (input) => {
@@ -33,6 +46,14 @@ function BirthdayPage(props) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <View style={{ borderWidth: 1, }}>
+                <AdMobBanner
+                    bannerSize={'smartBannerLandscape'}
+                    adUnitID={'ca-app-pub-3940256099942544/6300978111'}
+                    onAdViewDidReceiveAd={() => { console.log('ad') }}
+                    onDidFailToReceiveAdWithError={() => { console.log('fail ') }}
+                />
+            </View>
             <Image style={styles.bgcImg} source={require('../image/star-trails.jpg')} />
             <View style={styles.horizontalView}>
                 <Text style={styles.t}>輸入生日：</Text>
